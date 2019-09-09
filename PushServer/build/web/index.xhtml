@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" >
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .display {
+                font-size: 36px !important;
+            }
+        </style>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            function handleMessage(evt, data) {
+                $('.display').html(data);
+            }
+            //]]> 
+        </script>
+    </h:head>
+    <h:body>
+        <h:form>  
+            <h:outputText value="#{beanPush.count}" styleClass="ui-widget display" />  
+
+            <br />  
+
+            <p:commandButton value="Click" actionListener="#{beanPush.increment}" />  
+        </h:form>  
+
+        <p:push onmessage="handleMessage" channel="counter" />  
+
+    </h:body>
+</html>
+
